@@ -1,23 +1,38 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import Select from "@mui/material/Select";
-import DialogTitle from "@mui/material/DialogTitle";
-import { MenuItem, InputLabel, FormControl } from "@mui/material";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
+import {
+  TextField,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+} from "@mui/material";
 
-export default function AddItemDialog({ open, setOpen }) {
+export default function AddItemDialog({ setItems, open, setOpen }) {
   const [unit, setUnit] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [name, setName] = useState("");
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  const handleAdd = () => {};
-
-  const handleUnit = () => {};
+  const handleAdd = () => {
+    setItems((prevItems) => {
+      const newItem = {
+        id: prevItems.length + 1,
+        name,
+        amount: { unit, quantity },
+      };
+      return [...prevItems, newItem];
+    });
+  };
 
   return (
     <div>
@@ -30,14 +45,21 @@ export default function AddItemDialog({ open, setOpen }) {
             label="Item Name"
             fullWidth
             variant="standard"
+            onChange={(evt) => setName(evt.target.value)}
           />
-          <TextField id="quantity" label="Quantity" variant="standard" fullWidth />
+          <TextField
+            id="quantity"
+            label="Quantity"
+            variant="standard"
+            fullWidth
+            onChange={(evt) => setQuantity(evt.target.value)}
+          />
           <FormControl fullWidth variant="filled">
             <InputLabel>Unit</InputLabel>
             <Select
               value={unit}
               label="Age"
-              onChange={handleUnit}
+              onChange={(evt) => setUnit(evt.target.value)}
               className="unit--select"
             >
               <MenuItem value={"pc"}>Pieces</MenuItem>

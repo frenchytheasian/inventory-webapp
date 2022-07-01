@@ -15,7 +15,6 @@ export default function ItemTable() {
 
   const handleAddClick = () => {
     setOpenAddDialog(true);
-    console.log(openAddDialog);
   };
 
   return (
@@ -45,7 +44,14 @@ export default function ItemTable() {
       <Button variant="contained" color="primary" onClick={handleAddClick}>
         Add Item
       </Button>
-      {openAddDialog && <AddItemDialog open={openAddDialog} setOpen={setOpenAddDialog}/>}
+      {openAddDialog && (
+        <AddItemDialog
+          items={itemList}
+          setItems={setItemList}
+          open={openAddDialog}
+          setOpen={setOpenAddDialog}
+        />
+      )}
     </>
   );
 }
