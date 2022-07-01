@@ -1,8 +1,12 @@
 import React from "react";
-import Item from "./components/Item";
+import ItemTable from "./components/Table";
 
 function App() {
-  return <Item />;
+  return (
+    <div className="inventory-app">
+      <ItemTable />
+    </div>
+  );
 }
 
 export default App;
