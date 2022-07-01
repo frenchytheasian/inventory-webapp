@@ -1,5 +1,5 @@
 import React from "react";
-import ItemTable from "./components/Table";
+import ItemTable from "./components/ItemTable";
 
 function App() {
   return (

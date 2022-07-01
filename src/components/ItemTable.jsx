@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,10 +6,18 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
+import AddItemDialog from "./AddItemDialog";
 import data from "../fakedata";
 
 export default function ItemTable() {
-  const [itemList, setItemList] = React.useState(data.data.items);
+  const [itemList, setItemList] = useState(data.data.items);
+  const [openAddDialog, setOpenAddDialog] = useState(false);
+
+  const handleAddClick = () => {
+    setOpenAddDialog(true);
+    console.log(openAddDialog);
+  };
+
   return (
     <>
       <TableContainer>
@@ -34,9 +42,10 @@ export default function ItemTable() {
           </TableBody>
         </Table>
       </TableContainer>
-      <Button variant="contained" color="primary" onClick={addItem}>
+      <Button variant="contained" color="primary" onClick={handleAddClick}>
         Add Item
       </Button>
+      {openAddDialog && <AddItemDialog open={openAddDialog} setOpen={setOpenAddDialog}/>}
     </>
   );
 }
