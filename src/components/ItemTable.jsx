@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import {
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  IconButton,
+} from "@mui/material";
 import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 import AddItemDialog from "./AddItemDialog";
 import data from "../fakedata";
 
@@ -25,6 +29,7 @@ export default function ItemTable() {
             <TableRow>
               <TableCell>Item</TableCell>
               <TableCell>Amount</TableCell>
+              <TableCell>Delete</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -34,6 +39,11 @@ export default function ItemTable() {
                   <TableCell>{item.name}</TableCell>
                   <TableCell>
                     {item.amount.quantity} {item.amount.unit}
+                  </TableCell>
+                  <TableCell>
+                    <IconButton>
+                      <DeleteIcon />
+                    </IconButton>
                   </TableCell>
                 </TableRow>
               );
