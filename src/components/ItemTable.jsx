@@ -21,6 +21,12 @@ export default function ItemTable() {
     setOpenAddDialog(true);
   };
 
+  const handleDelete = (id) => {
+    setItemList((prevItems) => {
+      return [...prevItems].filter((item) => item.id !== id);
+    });
+  };
+
   return (
     <>
       <TableContainer>
@@ -41,7 +47,7 @@ export default function ItemTable() {
                     {item.amount.quantity} {item.amount.unit}
                   </TableCell>
                   <TableCell>
-                    <IconButton>
+                    <IconButton onClick={() => handleDelete(item.id)}>
                       <DeleteIcon />
                     </IconButton>
                   </TableCell>

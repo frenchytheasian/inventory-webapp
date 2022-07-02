@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 
 export default function AddItemDialog({ setItems, open, setOpen }) {
-  const [unit, setUnit] = useState("");
+  const [unit, setUnit] = useState("pc");
   const [quantity, setQuantity] = useState("");
   const [name, setName] = useState("");
 
